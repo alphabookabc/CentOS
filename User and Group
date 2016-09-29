@@ -1,0 +1,9 @@
+# Add a user
+useradd tshen -c "Terry Shen"
+passwd tshen
+
+# User account and password infomation
+vim /etc/passwd
+vim /etc/shadow
+
+# Add a group
