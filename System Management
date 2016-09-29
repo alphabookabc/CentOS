@@ -1,10 +1,13 @@
+# Set hostname
+  hostnamectl set-hostname BJS001.vccware.com
+  
 # switch to root
-su -
+  su -
 
 # show who is logged on and what they are doing
-w
+  w
 
 # kill a user
-w
-pkill -kill -t pts/0
+  w
+  pkill -kill -t pts/0
 
