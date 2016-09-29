@@ -1,0 +1,10 @@
+# switch to root
+su -
+
+# show who is logged on and what they are doing
+w
+
+# kill a user
+w
+pkill -kill -t pts/0
+
