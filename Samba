@@ -16,8 +16,21 @@ firewall-cmd --add-service=samba --permanent
 firewall-cmd --reload
 firewall-cmd --list-service
 
-# Example (add the user and group accordingly)
-# Group sales-rw have read/write/execute permission, group sales-r have read/execute permission, others have no permission to acccess
+# Create folder, users and groups
+mkdir /share
+useradd sales-rw
+useradd sales-r
+chown sales-rw:sales-rw /share
+chmod 775 /share
+useradd user01 -g sales-rw -c "user01 in sales-rw group"
+useradd user02 -g sales-r -c "user02 in sales-r group"
+smbpasswd -a user01
+smbpasswd -a user02
+
+# Example (/etc/samba/smb.conf)
+# Users in group sales-rw have read/write/execute permission
+# Users in group sales-r have read/execute permission
+# Others have no permission
 [Sales department]
 comment = Sales department
 path = /share
@@ -28,3 +41,6 @@ write list = sales-rw
 create mask = 0775
 force create mode = 0775
 directory mask = 0775
+
+# Restart smb service
+systemctl restart smb
