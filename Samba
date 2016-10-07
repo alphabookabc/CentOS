@@ -1,1 +1,30 @@
+# Install
+yum -y install samba
 
+# Start and enable smb service
+systemctl start smb
+systemctl status smb
+systemctl enable smb
+
+# Disable Selinux
+vi /etc/selinux/config
+SELINUX=disabled
+
+# Configure firewall
+firewall-cmd --get-services
+firewall-cmd --add-service=samba --permanent
+firewall-cmd --reload
+firewall-cmd --list-service
+
+# Example (add the user and group accordingly)
+# Group sales-rw have read/write/execute permission, group sales-r have read/execute permission, others have no permission to acccess
+[Sales department]
+comment = Sales department
+path = /share
+guest ok = no
+writable = yes
+valid users = @sales-rw,@sales-r
+write list = sales-rw
+create mask = 0775
+force create mode = 0775
+directory mask = 0775
