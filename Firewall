@@ -1,40 +1,40 @@
 # SELinux disable
-  getenforce
-  vi /etc/selinux/config
-  SELINUX=disabled
+getenforce
+vi /etc/selinux/config
+SELINUX=disabled
 
 # Firewall enable
-  systemctl status firewalld
-  systemctl enable firewalld
-  systemctl start firewalld  
+systemctl status firewalld
+systemctl enable firewalld
+systemctl start firewalld  
 
 # Firewall disable
-  systemctl status firewalld
-  systemctl stop firewalld
-  systemctl disable firewalld
+systemctl status firewalld
+systemctl stop firewalld
+systemctl disable firewalld
   
 # Firewall controlled services
-  firewall-cmd --get-services
-  ls /usr/lib/firewalld/services
+firewall-cmd --get-services
+ls /usr/lib/firewalld/services
   
 # Enable a service (once)
-  firewall-cmd --add-service=http
-  firewall-cmd --list-service
+firewall-cmd --add-service=http
+firewall-cmd --list-service
   
 # Enable a service (permanent)
-  firewall-cmd --add-service=http --permanent
-  firewall-cmd --reload
-  firewall-cmd --list-service
+firewall-cmd --add-service=http --permanent
+firewall-cmd --reload
+firewall-cmd --list-service
   
 # Enable a port (once)
-  firewall-cmd --add-port=465/tcp
-  firewall-cmd --list-port
+firewall-cmd --add-port=465/tcp
+firewall-cmd --list-port
   
 # Enable a port (permanent)
-  firewall-cmd --add-port=465/tcp --permanent
-  firewall-cmd --reload
-  firewall-cmd --list-port
+firewall-cmd --add-port=465/tcp --permanent
+firewall-cmd --reload
+firewall-cmd --list-port
   
 # Enable ICMP
-  firewall-cmd --add-icmp-block=echo-request
-  firewall-cmd --list-icmp-blocks
+firewall-cmd --add-icmp-block=echo-request
+firewall-cmd --list-icmp-blocks
