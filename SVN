@@ -12,6 +12,7 @@ vi authz
 # Add below
 [/]
 admin01=rw
+user01=r
 vi svnserve.conf
 # Make sure below active
 anon-access=none
