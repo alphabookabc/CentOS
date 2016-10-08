@@ -1,0 +1,39 @@
+# Subversion setup
+yum -y install subversion mod_dav_svn
+svnserve --version
+mkdir -p /svn/repos
+svnadmin create /svn/repos
+cd /svn/repos/conf
+vi passwd
+# Add below user account
+admin01 = 123456
+user01 = 123456
+vi authz
+# Add below
+[/]
+admin01=rw
+vi svnserve.conf
+# Make sure below active
+anon-access=none
+auth-access=write
+password-db=/svn/repos/conf/passwd
+authz-db=/svn/repos/conf/authz
+svnserve -d -r /svn/repos
+ps aux | grep svn
+netstat -ln | grep 3690
+
+# From Windows client
+Install TortoiseSVN software
+URL: svn:xxx.xxx.xxx.xxx
+
+# From Linux
+yum -y install subversion
+svn checkout svn://xxx.xxx.xxx.xxx /root/subversion
+# Selinux
+To be continued...
+
+# Firewall
+To be continued...
+
+# Backup and restore
+To be continued...
