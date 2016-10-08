@@ -3,6 +3,8 @@ getenforce
 vi /etc/selinux/config
 SELINUX=disabled
 
+setenforce 0
+
 # Firewall enable
 systemctl status firewalld
 systemctl enable firewalld
