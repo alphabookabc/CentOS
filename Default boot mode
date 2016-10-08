@@ -1,0 +1,2 @@
+systemctl set-default multi-user.target   #相当于id:3:initdefault:
+systemctl set-default graphical.target    #相当于id:5:initdefault:
