@@ -7,18 +7,23 @@ cd /svn/repos/conf
 vi passwd
 # Add below user account
 admin01 = 123456
+admin02 = 123456
 user01 = 123456
+user02 = 123456
 vi authz
 # Add below
+[groups]
+administrators = admin01,admin02
+users = user01,user02
 [/]
-admin01=rw
-user01=r
+@administrators = rw
+@users = r
 vi svnserve.conf
 # Make sure below active
 anon-access=none
 auth-access=write
-password-db=/svn/repos/conf/passwd
-authz-db=/svn/repos/conf/authz
+password-db=passwd
+authz-db=authz
 svnserve -d -r /svn/repos
 ps aux | grep svn
 netstat -ln | grep 3690
@@ -34,7 +39,8 @@ svn checkout svn://xxx.xxx.xxx.xxx /root/subversion
 To be continued...
 
 # Firewall
-To be continued...
+firewall-cmd --permanent --add-port=3690/tcp
+firewall-cmd --reload
 
 # Backup and restore
-To be continued...
+svnadmin dump /svn/repos > /backup/repos-$(date +%Y%m%d).dump
