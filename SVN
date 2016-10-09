@@ -43,6 +43,12 @@ URL: svn:xxx.xxx.xxx.xxx
 yum -y install subversion
 svn checkout svn://xxx.xxx.xxx.xxx /root/subversion
 
+# Start by default
+vi /etc/rc.d/rc.local
+# Add below
+svnserve -d -r /svn/repos
+chmod +x /etc/rc.d/rc.local
+
 # Backup
 svnadmin dump /svn/repos > /backup/repos-$(date +%Y%m%d).dump
 
