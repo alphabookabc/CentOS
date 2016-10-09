@@ -28,13 +28,6 @@ svnserve -d -r /svn/repos
 ps aux | grep svn
 netstat -ln | grep 3690
 
-# From Windows client
-Install TortoiseSVN software
-URL: svn:xxx.xxx.xxx.xxx
-
-# From Linux
-yum -y install subversion
-svn checkout svn://xxx.xxx.xxx.xxx /root/subversion
 # Selinux
 To be continued...
 
@@ -42,12 +35,23 @@ To be continued...
 firewall-cmd --permanent --add-port=3690/tcp
 firewall-cmd --reload
 
+# From Windows client
+Install TortoiseSVN software
+URL: svn:xxx.xxx.xxx.xxx
+# From Linux
+yum -y install subversion
+svn checkout svn://xxx.xxx.xxx.xxx /root/subversion
+
 # Backup
 svnadmin dump /svn/repos > /backup/repos-$(date +%Y%m%d).dump
 
 # Restore
 svnadmin create /svn/repos
 svnadmin load /svn/repos < /backup/repos-xxxxxxxx.dump
+
+# svnadmin hotcopy backup and restore
+svnadmin hotcopy /svn/repos /backup/repos-hotcopy-$(date +%Y%m%d)
+svnadmin hotcopy /backup/repos-hotcopy-xxxxxxxx /svn/repos
 
 # Reference
 Can't I just use a hotcopy to restore the repository?
