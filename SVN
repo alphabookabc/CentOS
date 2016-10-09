@@ -18,6 +18,7 @@ users = user01,user02
 [/]
 @administrators = rw
 @users = r
+* =
 vi svnserve.conf
 # Make sure below active
 anon-access=none
