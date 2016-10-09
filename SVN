@@ -42,5 +42,14 @@ To be continued...
 firewall-cmd --permanent --add-port=3690/tcp
 firewall-cmd --reload
 
-# Backup and restore
+# Backup
 svnadmin dump /svn/repos > /backup/repos-$(date +%Y%m%d).dump
+
+# Restore
+svnadmin create /svn/repos
+svnadmin load /svn/repos < /backup/repos-xxxxxxxx.dump
+
+# Reference
+Can't I just use a hotcopy to restore the repository?
+It depends, hotcopies created with svnadmin hotcopy must be moved to a server with identical setup. You should have the same version of subversion installed on both servers, same operating system, etc.
+Subversion dumps are designed to work with different versions of subversion, and are just more flexible. Hotcopies are handy to have, but I recommend creating both hotcopies and dumps as part of your backup plan.
