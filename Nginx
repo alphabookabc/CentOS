@@ -1,0 +1,16 @@
+# Add NGINX yum repository
+vi /etc/yum.repos.d/nginx.repo
+# Add below
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+gpgcheck=0
+enabled=1
+
+# Install
+yum -y install nginx
+systemctl start nginx
+systemctl enable nginx
+netstat -ln | grep 80
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --reload
