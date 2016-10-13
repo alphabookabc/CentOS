@@ -18,3 +18,16 @@ firewall-cmd --reload
 or
 firewall-cmd --permanent --add-port=80/tcp
 firewall-cmd --reload
+
+# Virtual hosts
+vi /etc/nginx/conf.d/virtual.host.conf
+# As below
+server {
+listen 80;
+server_name www.vccware.com;
+
+location / {
+root /www/vccware;
+index index.html index.htm;
+}
+}
