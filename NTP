@@ -1,0 +1,16 @@
+# ntp setup
+
+yum install ntp -y
+systemctl start ntpd
+systemctl enable ntpd
+
+firewall-cmd --add-service=ntp --permanent
+firewall-cmd --reload
+firewall-cmd --list-service
+
+vi /etc/ntp.conf
+restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
+server 0.centos.pool.ntp.org iburst
+...
+
+ntpq -p
