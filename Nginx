@@ -12,5 +12,9 @@ yum -y install nginx
 systemctl start nginx
 systemctl enable nginx
 netstat -ln | grep 80
+
+firewall-cmd --permanent --add-service=http
+firewall-cmd --reload
+or
 firewall-cmd --permanent --add-port=80/tcp
 firewall-cmd --reload
