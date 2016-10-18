@@ -10,16 +10,17 @@ netstat -ln | grep 80
 
 firewall-cmd --permanent --add-service=http
 firewall-cmd --reload
+firewall-cmd --list-service
 or
 firewall-cmd --permanent --add-port=80/tcp
 firewall-cmd --reload
 
 # Install MariaDB
 yum -y install mariadb-server mariadb
-systemctl start mariadb
-systemctl enable mariadb
 mysql --version
 mysql_secure_installation
+systemctl start mariadb
+systemctl enable mariadb
 
 # Install PHP
 yum -y install php php-mysql php-fpm php-gd php-xml php-mbstring
