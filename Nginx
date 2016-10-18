@@ -71,3 +71,12 @@ vi /usr/share/nginx/html/info.php
 <?php phpinfo(); ?>
 
 # Access by http://www.vccware.com/info.php
+
+# Before Install Joomla
+chown root:nginx /var/lib/php/session
+
+# Install Joomla
+
+# After Install Joomla
+chown -R nginx cache
+chown -R nginx administrator/cache
