@@ -18,9 +18,9 @@ firewall-cmd --reload
 # Install MariaDB
 yum -y install mariadb-server mariadb
 mysql --version
-mysql_secure_installation
 systemctl start mariadb
 systemctl enable mariadb
+mysql_secure_installation
 
 # Install PHP
 yum -y install php php-mysql php-fpm php-gd php-xml php-mbstring
