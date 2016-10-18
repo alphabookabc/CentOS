@@ -1,16 +1,11 @@
 # Add NGINX yum repository
-vi /etc/yum.repos.d/nginx.repo
-# Add below
-[nginx]
-name=nginx repo
-baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
-gpgcheck=0
-enabled=1
+yum -y install epel-release
 
 # Install
 yum -y install nginx
 systemctl start nginx
 systemctl enable nginx
+nginx -v
 netstat -ln | grep 80
 
 firewall-cmd --permanent --add-service=http
@@ -19,15 +14,59 @@ or
 firewall-cmd --permanent --add-port=80/tcp
 firewall-cmd --reload
 
+# Install MariaDB
+yum -y install mariadb-server mariadb
+systemctl start mariadb
+systemctl enable mariadb
+mysql --version
+mysql_secure_installation
+
+# Install PHP
+yum -y install php php-mysql php-fpm php-gd php-xml php-mbstring
+vi /etc/php.ini
+# Change as below
+cgi.fix_pathinfo=0
+
+vi /etc/php-fpm.d/www.conf
+# Change as below
+listen = /var/run/php-fpm/php-fpm.sock
+listen.owner = nobody
+listen.group = nobody
+user = nginx
+group = nginx
+
+systemctl start php-fpm
+systemctl enable php-fpm
+
 # Virtual hosts
-vi /etc/nginx/conf.d/virtual.host.conf
+vi /etc/nginx/conf.d/vccware.conf
 # As below
 server {
-listen 80;
-server_name www.vccware.com;
+  listen 80;
+  server_name www.vccware.com;
+  root /usr/share/nginx/html;
+  index index.php index.html index.htm;
+  location / {
+    try_files $uri $uri/ /index.php$query_string;
+  }
+  error_page 404 /404.html;
+  error_page 500 502 503 504 /50x.html;
+  location = /50x.html {
+    root /usr/share/nginx/html;
+  }
+  location ~ \.php$ {
+    try_files $uri =404;
+    fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+  }
+}
 
-location / {
-root /www/vccware;
-index index.html index.htm;
-}
-}
+systemctl restart nginx
+
+vi /usr/share/nginx/html/info.php
+# Add below information
+<?php phpinfo(); ?>
+
+# Access by http://www.vccware.com/info.php
