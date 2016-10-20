@@ -1,5 +1,5 @@
 #!/bin/bash
-MyDate='date +%Y-%m-%d'
+MyDate=`date +%Y-%m-%d`
 MyFile=Backup-$MyDate.tar.gz
 SourceDir=/var/www/html
 DestinationDir=/backup/www
