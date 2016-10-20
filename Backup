@@ -1,8 +1,8 @@
 # Backup and Restore
 
 # Backup MySQL
-mysqldump --user root --password=123.com --databases MyDB > /backup/MySQL/MyDB-$(date +%Y%m%d).dump
+mysqldump --user root --password=123.com --databases MyDB > /backup/MySQL/MyDB-$(date +%Y%m%d).sql
 # Restore MySQL
 # Create the datebase with the right name, then run below to restore
-mysql --user root --password=123.com MyDB < /backup/MySQL/MyDB-$(date +%Y%m%d).dump
+mysql --user root --password=123.com MyDB < /backup/MySQL/MyDB-$(date +%Y%m%d).sql
 
