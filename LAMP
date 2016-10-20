@@ -27,4 +27,12 @@ phpinfo();
 # Access http://x.x.x.x/info.php
 
 # Install phpMyAdmin
+yum -y install epel-release
 yum install phpmyadmin -y
+vi /etc/httpd/conf.d/phpMyAdmin.conf
+# change the ip from 127.0.0.1 to 192.168.1.100 (one your managing IP from)
+Require ip 192.168.1.100
+
+vi /etc/phpMyAdmin/config.inc.php
+# Change the authentication from cookie to http
+$cfg['Servers'][$i]['auth_type']     = 'http';
