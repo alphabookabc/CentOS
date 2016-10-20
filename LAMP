@@ -1,4 +1,30 @@
 # Install CentOS 7
 
 # Install Apache
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+firewall-cmd -permanent --add-service=http
+firewall-cmd --reload
+firewall-cmd --list-service
 
+# Install Mariadb
+yum install mariadb-server mariadb -y
+systemctl start mariadb
+systemctl enable mariadb
+mysql_secure_installation
+
+# Install PHP
+yum install php php-mysql php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel -y
+
+# Test PHP
+vi /var/www/html/info.php
+# Add below content
+<?php
+phpinfo();
+?>
+
+# Access http://x.x.x.x/info.php
+
+# Install phpMyAdmin
+yum install phpmyadmin -y
