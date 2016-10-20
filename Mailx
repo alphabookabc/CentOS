@@ -3,4 +3,4 @@
 # Simple
 mail -s "My Subject" receiver@163.com < mailbody.txt
 # Relay external SMTP server
-mail -S smtp=smtp.163.com -S smtp-auth-user="xxx@163.com" -S smtp-auth-password="xxx" -r from@163.com -s "My Subject" -v "to@163.com"
+mail -S smtp-use-ssl -S smtp=smtp.163.com -S smtp-auth-user="xxx@163.com" -S smtp-auth-password="xxx" -r from@163.com -s "My Subject" -v "to@163.com"
