@@ -1,1 +1,5 @@
 # Backup
+
+
+# Backup MySQL
+mysqldump --user root --password=123.com --databases JoomlaDB > /backup/MySQL/Joomla-$(date +%Y%m%d).dump
