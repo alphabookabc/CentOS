@@ -1,5 +1,3 @@
-# Backup and Restore
-
 # Backup MySQL
 mysqldump --user root --password=123.com --databases MyDB > /backup/MySQL/MyDB-$(date +%Y%m%d).sql
 # Restore MySQL
