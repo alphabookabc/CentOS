@@ -1,0 +1,14 @@
+Example file student.txt
+01001;Zhang San;Class 1;Bei Jing;Bei Jing
+01002;Li Si;Class 2;Tian Jin;Tian Jin
+01004;Wang Wu;Class 1;Bao Ding;He Bei
+01003;Zhao Liu;Class 3;Shi Jia Zhuang;He Bei
+01006;Qian Qi;Class 4;Bao Ding;He Bei
+01005;Zhang San;Class 1;Tang Shan;He Bei
+01008;Tom;Class 3;Tang Shan;He Bei
+01007;Jerry;Class 1;Tang Shan;He Bei
+01009;Alex;Class 1;Tang Shan;He Bei
+
+# sed
+
+# cut
