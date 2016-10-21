@@ -1,0 +1,2 @@
+# epel Extra Packages for Enterprise Linux repository configuration
+yum install epel -y
