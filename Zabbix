@@ -39,7 +39,9 @@ mysql> grant all privileges on zabbixdb.* to zabbix@localhost identified by 'pas
 mysql> flush privileges;
 mysql> quit
 
-cd /usr/share/doc/zabbix-server-mysql-3.0.0/create
+cd /usr/share/doc/zabbix-server-mysql-3.0.5
+gunzip create.sql.gz
+
 mysql -u zabbix -p zabbixdb < create.sql
 
 # Zabbix setup from web http://x.x.x.x/zabbix
