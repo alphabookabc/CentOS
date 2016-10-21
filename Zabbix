@@ -47,7 +47,7 @@ mysql -u zabbix -p zabbixdb < create.sql
 # Zabbix setup from web http://x.x.x.x/zabbix
 # After done, the default Username:admin Password:zabbix
 # Error message: "Zabbix server is not running: the information displayed may not be current"
-# We may do as below:
+# We may do as below, after that restart the zabbix-server service
 vi /etc/zabbix/zabbix_server.conf
 DBHost=localhost
 DBName=zabbixdb
