@@ -10,5 +10,7 @@ Example file student.txt
 01009;Alex;Class 1;Tang Shan;He Bei
 
 # sed
+cat student.txt | sed -n '/He Bei/p' | sort
 
 # cut
+cat student.txt | sort | cut -f4 -d ';' | sort | uniq
