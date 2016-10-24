@@ -1,7 +1,7 @@
 # Install CentOS 7
 
 # Install and configure Apache
-yum -y install httpd httpd-devel
+yum -y install httpd
 systemctl start httpd
 systemctl enable httpd
 firewall-cmd --permanent --add-service=http
