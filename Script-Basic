@@ -1,0 +1,32 @@
+a=`ls -l`
+echo $a
+echo "$a"
+echo '$a'
+
+echo "Please input name"
+read Name
+echo "Your name is $Name"
+
+#!/bin/bash
+files=`ls /root/backup`
+for file in $files;
+do
+cd /root/backup
+mv $file $file.old
+done
+
+
+matches
+does not matches
+is null
+is not null
++-*/%
+<
+>
+<=
+>=
+==
+!=
+
+sed 's/to_be_replaced/replaced/g' /root/student.txt
+
